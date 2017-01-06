@@ -1,5 +1,5 @@
-# Silverstripe Word Origin
-Link a word with its origin from another language Edit
+# Silverstripe Etymologist
+Link a word with its origin from another language.
 
 ### Requirements
  - SilverStripe 3.2.*
