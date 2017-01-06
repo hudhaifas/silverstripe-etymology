@@ -1,0 +1,7 @@
+---
+Name: etymologist
+---
+
+EtymologistAdmin:
+  extensions:
+    - SubsiteMenuExtension

@@ -1,0 +1,24 @@
+{
+    "name": "hudhaifas/silverstripe-etymologist",
+    "description": "Link a word with its origin from another language.",
+    "type": "silverstripe-module",
+    "homepage": "https://github.com/hudhaifas/silverstripe-etymologist",
+    "keywords": ["silverstripe", "word", "origin", "etymologist", "etymology"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Hudhaifa Shatnawi",
+            "email": "me@hudhaifa.com"
+        }
+    ],
+    "support": {
+        "issues": "http://github.com/hudhaifas/silverstripe-etymologist/issues"
+    },
+    "require": {
+        "silverstripe/cms": "~3.0",
+        "silverstripe/framework": "~3.0"
+    },
+    "extra": {
+        "installer-name": "etymologist"
+    }
+}

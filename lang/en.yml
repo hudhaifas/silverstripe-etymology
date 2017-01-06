@@ -1,0 +1,27 @@
+en:
+  WordOriginsAdmin:
+    MENUTITLE: 'Word Origin'
+  Word:
+    PLURALNAME: 'Words'
+    SINGULARNAME: 'Words'
+  OriginReference:
+    PLURALNAME: 'References'
+    SINGULARNAME: 'References'
+  OriginLanguage:
+    PLURALNAME: 'Languages'
+    SINGULARNAME: 'Languages'
+  OriginRegion:
+    PLURALNAME: 'Regions'
+    SINGULARNAME: 'Regions'
+  WordOrigins:
+    WORD: 'Word'
+    SPELLING: 'Spelling'
+    MEANING: 'Meaning'
+    PRONUNCIATION: 'Pronunciation'
+    ORIGINS: 'Origins'
+    REFERENCES: 'References'
+    LANGUAGES: 'Languages'
+    REGIONS: 'Regions'
+    WORDS: 'Words'
+    NAME: 'Name'
+    DESCRIPTION: 'Description'

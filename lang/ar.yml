@@ -1,0 +1,27 @@
+ar:
+  WordOriginsAdmin:
+    MENUTITLE: 'أصل الكلمة'
+  Word:
+    PLURALNAME: 'الكلمات'
+    SINGULARNAME: 'الكلمات'
+  OriginReference:
+    PLURALNAME: 'المراجع'
+    SINGULARNAME: 'المراجع'
+  OriginLanguage:
+    PLURALNAME: 'اللغات'
+    SINGULARNAME: 'اللغات'
+  OriginRegion:
+    PLURALNAME: 'المناطق'
+    SINGULARNAME: 'المناطق'
+  WordOrigins:
+    WORD: 'الكلمة'
+    SPELLING: 'التهجئة'
+    MEANING: 'المعنى'
+    PRONUNCIATION: 'اللفظ'
+    ORIGINS: 'الأصول'
+    REFERENCES: 'المراجع'
+    LANGUAGES: 'اللغات'
+    REGIONS: 'المناطق'
+    WORDS: 'الكلمات'
+    NAME: 'الاسم'
+    DESCRIPTION: 'الوصف'
