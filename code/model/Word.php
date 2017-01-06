@@ -50,6 +50,9 @@ class Word
         'Languages' => 'OriginLanguage',
         'Origins' => 'Word',
     );
+    private static $belongs_many_many = array(
+        'Derivations' => 'Word',
+    );
     private static $searchable_fields = array(
         'Word' => array(
             'field' => 'TextField',
