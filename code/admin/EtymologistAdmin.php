@@ -40,7 +40,7 @@ class EtymologistAdmin
     );
     private static $url_segment = 'etymologist';
     private static $menu_title = "Word Origins";
-    private static $menu_icon = "etymologist/images/origins.png";
+    private static $menu_icon = "etymologist/images/etymology.png";
     public $showImportForm = false;
     private static $tree_class = 'Origin';
 
