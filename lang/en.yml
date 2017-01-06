@@ -1,6 +1,6 @@
 en:
-  WordOriginsAdmin:
-    MENUTITLE: 'Word Origin'
+  EtymologistAdmin:
+    MENUTITLE: 'Etymologist'
   Word:
     PLURALNAME: 'Words'
     SINGULARNAME: 'Words'
@@ -13,7 +13,7 @@ en:
   OriginRegion:
     PLURALNAME: 'Regions'
     SINGULARNAME: 'Regions'
-  WordOrigins:
+  Etymologist:
     WORD: 'Word'
     SPELLING: 'Spelling'
     MEANING: 'Meaning'

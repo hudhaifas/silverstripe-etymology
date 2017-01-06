@@ -62,14 +62,14 @@ class Word
     public function fieldLabels($includerelations = true) {
         $labels = parent::fieldLabels($includerelations);
 
-        $labels['Word'] = _t('WordOrigins.WORD', 'Word');
-        $labels['Spelling'] = _t('WordOrigins.SPELLING', 'Spelling');
-        $labels['Meaning'] = _t('WordOrigins.MEANING', 'Meaning');
-        $labels['Description'] = _t('WordOrigins.DESCRIPTION', 'Description');
-        $labels['Pronunciation'] = _t('WordOrigins.PRONUNCIATION', 'Pronunciation');
-        $labels['References'] = _t('WordOrigins.REFERENCES', 'References');
-        $labels['Languages'] = _t('WordOrigins.LANGUAGES', 'Languages');
-        $labels['Origins'] = _t('WordOrigins.ORIGINS', 'Origins');
+        $labels['Word'] = _t('Etymologist.WORD', 'Word');
+        $labels['Spelling'] = _t('Etymologist.SPELLING', 'Spelling');
+        $labels['Meaning'] = _t('Etymologist.MEANING', 'Meaning');
+        $labels['Description'] = _t('Etymologist.DESCRIPTION', 'Description');
+        $labels['Pronunciation'] = _t('Etymologist.PRONUNCIATION', 'Pronunciation');
+        $labels['References'] = _t('Etymologist.REFERENCES', 'References');
+        $labels['Languages'] = _t('Etymologist.LANGUAGES', 'Languages');
+        $labels['Origins'] = _t('Etymologist.ORIGINS', 'Origins');
 
         return $labels;
     }

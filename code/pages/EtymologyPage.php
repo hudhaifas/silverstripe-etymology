@@ -34,7 +34,7 @@ class EtymologyPage_Controller
 
     public function word() {
         $id = $this->getRequest()->param('ID');
-        $word = WordOriginsHelper::get_word($id);
+        $word = EtymologistHelper::get_word($id);
 
         return $word->renderWith("Word");
     }
@@ -42,7 +42,7 @@ class EtymologyPage_Controller
     /// Search Book ///
     public function SearchWord() {
         $fields = new FieldList(
-                TextField::create('SearchTerm', _t('WordOrigins.SEARCH', 'Search'))
+                TextField::create('SearchTerm', _t('Etymologist.SEARCH', 'Search'))
         );
 
         // Create Validators
@@ -57,8 +57,8 @@ class EtymologyPage_Controller
     public function doSearchWord($data, $form) {
         $term = $data['SearchTerm'];
 
-        $words = WordOriginsHelper::search_all_words($this->request, $term);
-        $title = _t('WordOrigins.SEARCH_RESULTS', 'Search Results') . ': ' . $term;
+        $words = EtymologistHelper::search_all_words($this->request, $term);
+        $title = _t('Etymologist.SEARCH_RESULTS', 'Search Results') . ': ' . $term;
 
         if ($words) {
             $paginate = PaginatedList::create(

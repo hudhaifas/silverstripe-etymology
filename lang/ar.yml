@@ -1,6 +1,6 @@
 ar:
-  WordOriginsAdmin:
-    MENUTITLE: 'أصل الكلمة'
+  EtymologistAdmin:
+    MENUTITLE: 'أصول الكلمات'
   Word:
     PLURALNAME: 'الكلمات'
     SINGULARNAME: 'الكلمات'
@@ -13,7 +13,7 @@ ar:
   OriginRegion:
     PLURALNAME: 'المناطق'
     SINGULARNAME: 'المناطق'
-  WordOrigins:
+  Etymologist:
     WORD: 'الكلمة'
     SPELLING: 'التهجئة'
     MEANING: 'المعنى'

@@ -11,7 +11,7 @@
  * @author Hudhaifa Shatnawi <hudhaifa.shatnawi@gmail.com>
  * @version 1.0, Jan 6, 2017 - 12:07:31 PM
  */
-class WordOriginsHelper {
+class EtymologistHelper {
 
     public static function get_word($id) {
         return DataObject::get_by_id('Word', (int) $id);
