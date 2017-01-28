@@ -30,7 +30,8 @@
  * @version 1.0, Jan 6, 2017 - 10:33:31 AM
  */
 class Word
-        extends DataObject {
+        extends DataObject
+        implements SingleDataObject {
 
     private static $db = array(
         'Word' => 'Varchar(255)',
@@ -116,6 +117,62 @@ class Word
 
     public function forTemplate() {
         return $this->renderWith('Word');
+    }
+
+    public function getObjectImage() {
+        
+    }
+
+    public function getObjectLink() {
+        return EtymologyPage::get()->first()->Link("show/$this->ID");
+    }
+
+    public function getObjectRelated() {
+        
+    }
+
+    public function getObjectSummary() {
+        $lists = array();
+        if ($this->Spelling) {
+            $lists[] = array(
+                'Title' => _t('Etymologist.SPELLING', 'Spelling'),
+                'Value' => $this->Spelling
+            );
+        }
+
+        if ($this->Meaning) {
+            $lists[] = array(
+                'Title' => _t('Etymologist.MEANING', 'Meaning'),
+                'Value' => $this->Meaning
+            );
+        }
+
+        if ($this->Description) {
+            $lists[] = array(
+                'Title' => _t('Etymologist.DESCRIPTION', 'Description'),
+                'Value' => '<br />' . $this->Description
+            );
+        }
+
+        return new ArrayList($lists);
+    }
+
+    public function getObjectTabs() {
+        $lists = array();
+        $lists[] = array(
+            'Title' => _t('Etymologist.ORIGINS', 'Origins'),
+            'Content' => $this->renderWith('WordOrigins')
+        );
+
+        return new ArrayList($lists);
+    }
+
+    public function getObjectTitle() {
+        return $this->getTitle();
+    }
+
+    public function isObjectDisabled() {
+        
     }
 
 }

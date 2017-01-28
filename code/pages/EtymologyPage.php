@@ -1,9 +1,27 @@
 <?php
 
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * MIT License
+ *  
+ * Copyright (c) 2016 Hudhaifa Shatnawi
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
  */
 
 /**
@@ -12,7 +30,7 @@
  * @version 1.0, Jan 6, 2017 - 11:10:05 AM
  */
 class EtymologyPage
-        extends Page {
+        extends DataObjectPage {
 
     private static $icon = "etymologist/images/etymology.png";
     private static $url_segment = 'etymologist';
@@ -20,63 +38,62 @@ class EtymologyPage
     private static $allowed_children = 'none';
     private static $description = 'Adds etymology to your website.';
 
+    public function canCreate($member = false) {
+        if (!$member || !(is_a($member, 'Member')) || is_numeric($member)) {
+            $member = Member::currentUserID();
+        }
+
+        return (DataObject::get($this->owner->class)->count() > 0) ? false : true;
+    }
+
 }
 
 class EtymologyPage_Controller
-        extends Page_Controller {
+        extends DataObjectPage_Controller {
 
-    private static $allowed_actions = array(
-        'word',
-        // Search Actions
-        'SearchWord',
-        'doSearchWord'
-    );
+    public function init() {
+        parent::init();
 
-    public function word() {
-        $id = $this->getRequest()->param('ID');
-        $word = EtymologistHelper::get_word($id);
-
-        return $word->renderWith("Word");
+        Requirements::css("etymologist/css/jquery.jOrgChart.css");
+        Requirements::css("etymologist/css/jquery.jOrgChart-rtl.css");
+        Requirements::css("etymologist/css/etymologist.css");
+        Requirements::javascript("etymologist/js/jquery.jOrgChart.js");
     }
 
-    /// Search Book ///
-    public function SearchWord() {
-        $fields = new FieldList(
-                TextField::create('SearchTerm', _t('Etymologist.SEARCH', 'Search'))
-        );
-
-        // Create Validators
-        $validator = new RequiredFields('SearchTerm');
-
-        $form = new Form($this, 'SearchWord', $fields, new FieldList(new FormAction('doSearchWord')), $validator);
-        $form->setTemplate('Form_SearchPerson');
-
-        return $form;
+    protected function searchObjects($list, $keywords) {
+        return $list->filter(array(
+                    'Word:PartialMatch' => $keywords
+        ));
     }
 
-    public function doSearchWord($data, $form) {
-        $term = $data['SearchTerm'];
+    protected function getObjectsList() {
+        return DataObject::get('Word');
+    }
 
-        $words = EtymologistHelper::search_all_words($this->request, $term);
-        $title = _t('Etymologist.SEARCH_RESULTS', 'Search Results') . ': ' . $term;
+    protected function getFiltersList() {
+        $lists = array();
 
-        if ($words) {
-            $paginate = PaginatedList::create(
-                            $words, $this->request
-                    )->setPageLength(50)
-                    ->setPaginationGetVar('s');
-
-
-            return $this
-                            ->customise(array(
-                                'Words' => $words,
-                                'Results' => $paginate,
-                                'Title' => $title
-                            ))
-                            ->renderWith(array('EtymologyPage', 'Page'));
-        } else {
-            return $this->httpError(404, 'No books could be found!');
+        $langs = DataObject::get('OriginLanguage')->Limit(8);
+        if (sizeof($langs) > 0) {
+            $lists [] = array(
+                'Title' => _t('Etymologist.LANGUAGES', 'Languages'),
+                'Items' => $langs
+            );
         }
+
+        $regions = DataObject::get('OriginRegion')->Limit(8);
+        if (sizeof($regions) > 0) {
+            $lists [] = array(
+                'Title' => _t('Etymologist.REGIONS', 'Regions'),
+                'Items' => $regions
+            );
+        }
+
+        return new ArrayList($lists);
+    }
+
+    protected function getPageLength() {
+        return 48;
     }
 
     public function getWords() {
