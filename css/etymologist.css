@@ -16,24 +16,89 @@ and open the template in the editor.
 .dataobject-page .dataobject-grid .dataobject-item > div {
   height: 12rem;
 }
-.chart-pane .node {
-  width: 120px;
-  height: 50px;
+.chart-container.origins .left {
+  border-left: 0;
+  border-right: 2px solid black;
 }
-.chart-pane .node a {
-  text-align: right;
+.chart-container.origins .right {
+  border-left: 2px solid black;
+  border-right: 0;
 }
-.chart-pane.r2l .node {
+.chart-container.origins .left {
+  position: relative;
+}
+.chart-container.origins .left:after {
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  /*bottom: 100%;*/
+  left: -1px;
+  bottom: -6px;
+  border: solid transparent;
+  border-color: rgba(136, 183, 213, 0);
+  border-top-color: #000;
+  border-width: 6px;
+  pointer-events: none;
+  margin-left: -6px;
+}
+.chart-container.derivations .line.down {
+  position: relative;
+}
+.chart-container.derivations .line.down:after {
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  /*bottom: 100%;*/
+  left: 50%;
+  top: -6px;
+  border: solid transparent;
+  border-color: rgba(136, 183, 213, 0);
+  border-bottom-color: #000;
+  border-width: 6px;
+  pointer-events: none;
+  margin-left: -6px;
+}
+.chart-container .chart-pane.r2l .node {
   position: relative;
   width: 50px;
   height: 120px;
 }
-.chart-pane.r2l .node a {
+.chart-container .chart-pane.r2l .node a {
   position: absolute;
   top: 28px;
   left: -28px;
   width: 120px;
   height: 50px;
   text-align: right;
+}
+.chart-container .chart-pane .node {
+  width: 120px;
+  height: 50px;
+  border: 1px solid transparent;
+  border-color: black;
+  border-radius: .25rem;
+}
+.chart-container .chart-pane .node a {
+  font-size: 16px;
+  text-align: left;
+}
+.chart-container .chart-pane .node a:hover {
+  text-decoration: none;
+}
+.chart-container .chart-pane .node a span {
+  font-size: 11px;
+}
+.chart-container .chart-pane .line {
+  width: 2px;
+}
+.chart-container .chart-pane .left {
+  border-left: 0;
+  border-right: 2px solid black;
+}
+.chart-container .chart-pane .right {
+  border-left: 2px solid black;
+  border-right: 0;
 }
 /*# sourceMappingURL=etymologist.css.map */

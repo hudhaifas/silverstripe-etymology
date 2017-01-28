@@ -163,26 +163,31 @@ class Word
 
     public function getObjectTabs() {
         $lists = array();
-        $lists[] = array(
-            'Title' => _t('Etymologist.ORIGINS', 'Origins'),
-            'Content' => $this
-                    ->customise(array(
-                        'TheWord' => $this,
-                        'Dir' => 'Origins'
-                    ))
-                    ->renderWith('WordSeries')
-        );
 
-        $lists[] = array(
-            'Title' => _t('Etymologist.DERIVATIONS', 'Derivations'),
-            'Content' => $this
-                    ->customise(array(
-                        'TheWord' => $this,
-                        'Dir' => 'Derivations'
-                    ))
-                    ->renderWith('WordSeries')
-        );
+        if ($this->Origins()->Count()) {
+            $lists[] = array(
+                'Title' => _t('Etymologist.ORIGINS', 'Origins'),
+                'Content' => $this
+                        ->customise(array(
+                            'TheWord' => $this,
+                            'Dir' => 'origins'
+                        ))
+                        ->renderWith('WordSeries')
+            );
+        }
 
+        if ($this->Derivations()->Count()) {
+            $lists[] = array(
+                'Title' => _t('Etymologist.DERIVATIONS', 'Derivations'),
+                'Content' => $this
+                        ->customise(array(
+                            'TheWord' => $this,
+                            'Dir' => 'derivations'
+                        ))
+                        ->renderWith('WordSeries')
+            );
+        }
+        
         return new ArrayList($lists);
     }
 

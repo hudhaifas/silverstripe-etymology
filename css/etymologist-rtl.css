@@ -1,0 +1,21 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jan 27, 2017, 11:57:50 PM
+    Author     : hudhaifa
+*/
+.chart-container .chart-pane .left {
+  border-left: 2px solid black;
+  border-right: 0;
+}
+.chart-container .chart-pane .right {
+  border-left: 0;
+  border-right: 2px solid black;
+}
+.chart-container .chart-pane .node a {
+  text-align: right;
+}
+/*# sourceMappingURL=etymologist-rtl.css.map */

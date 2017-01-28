@@ -57,6 +57,9 @@ class EtymologyPage_Controller
         Requirements::css("etymologist/css/jquery.jOrgChart.css");
         Requirements::css("etymologist/css/jquery.jOrgChart-rtl.css");
         Requirements::css("etymologist/css/etymologist.css");
+        if ($this->isRTL()) {
+            Requirements::css("etymologist/css/etymologist-rtl.css");
+        }
         Requirements::javascript("etymologist/js/jquery.jOrgChart.js");
     }
 

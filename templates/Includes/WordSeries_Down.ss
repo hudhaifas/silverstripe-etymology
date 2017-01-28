@@ -1,11 +1,6 @@
 <li>
-    <a href="$ObjectLink" title="$Title">
-        $Word <% if $Spelling %><sub>($Spelling)</sub><% end_if %>
-        <br />
-        <% loop Languages %>
-            <sub>$Title</sub> <% if not Last %>, <% end_if %>
-        <% end_loop %>
-    </a>
+    <% include WordSeries_Word %>
+
     <% if Origins.Count %>
         <ul>
             <% loop Origins %>

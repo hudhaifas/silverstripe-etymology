@@ -1,12 +1,12 @@
 <ul id="word-origins-{$Dir}" style="display:noe">
-    <% if $Dir == 'Origins' %>
+    <% if $Dir == 'origins' %>
         $WordDown            
-    <% else_if $Dir == 'Derivations' %>
+    <% else_if $Dir == 'derivations' %>
         $WordUp                
     <% end_if %>
 </ul>
 
-<div id="origins-tree-{$Dir}"></div>
+<div id="origins-tree-{$Dir}" class="{$Dir}"></div>
 
 <script>
     $(document).ready(function () {
