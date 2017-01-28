@@ -9,7 +9,7 @@
     <% if Origins.Count %>
         <ul>
             <% loop Origins %>
-                $Me                
+                $Me.WordDown
             <% end_loop %>
         </ul>
     <% end_if %>

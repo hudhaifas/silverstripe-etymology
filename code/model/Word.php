@@ -115,8 +115,12 @@ class Word
         return $this->Word;
     }
 
-    public function forTemplate() {
-        return $this->renderWith('Word');
+    public function WordUp() {
+        return $this->renderWith('WordSeries_Up');
+    }
+
+    public function WordDown() {
+        return $this->renderWith('WordSeries_Down');
     }
 
     public function getObjectImage() {
@@ -161,7 +165,22 @@ class Word
         $lists = array();
         $lists[] = array(
             'Title' => _t('Etymologist.ORIGINS', 'Origins'),
-            'Content' => $this->renderWith('WordOrigins')
+            'Content' => $this
+                    ->customise(array(
+                        'TheWord' => $this,
+                        'Dir' => 'Origins'
+                    ))
+                    ->renderWith('WordSeries')
+        );
+
+        $lists[] = array(
+            'Title' => _t('Etymologist.DERIVATIONS', 'Derivations'),
+            'Content' => $this
+                    ->customise(array(
+                        'TheWord' => $this,
+                        'Dir' => 'Derivations'
+                    ))
+                    ->renderWith('WordSeries')
         );
 
         return new ArrayList($lists);
