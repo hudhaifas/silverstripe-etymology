@@ -16,18 +16,18 @@ and open the template in the editor.
 .dataobject-page .dataobject-grid .dataobject-item > div {
   height: 12rem;
 }
-.chart-container.origins .left {
+.chart-container.derivations .left {
   border-left: 0;
   border-right: 2px solid black;
 }
-.chart-container.origins .right {
+.chart-container.derivations .right {
   border-left: 2px solid black;
   border-right: 0;
 }
-.chart-container.origins .left {
+.chart-container.derivations .left {
   position: relative;
 }
-.chart-container.origins .left:after {
+.chart-container.derivations .left:after {
   content: " ";
   height: 0;
   width: 0;
@@ -42,10 +42,10 @@ and open the template in the editor.
   pointer-events: none;
   margin-left: -6px;
 }
-.chart-container.derivations .line.down {
+.chart-container.origins .line.down {
   position: relative;
 }
-.chart-container.derivations .line.down:after {
+.chart-container.origins .line.down:after {
   content: " ";
   height: 0;
   width: 0;
