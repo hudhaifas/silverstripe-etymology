@@ -57,6 +57,8 @@
         fullscreen: true,
         // Drag scroller options
         dragScroller: true,
+        // Collapse options
+        collapse: true,
         // Export options
         exportImage: true,
         exportFile: 'family.png',
@@ -101,6 +103,10 @@
         // Expand and contract nodes
         if ($childNodes.length > 0) {
             $nodeDiv.click(function () {
+                if (!opts.collapse) {
+                    return;
+                }
+
                 var $this = $(this);
                 var $tr = $this.closest("tr");
 
@@ -130,7 +136,9 @@
 
         if ($childNodes.length > 0) {
             // if it can be expanded then change the cursor
-            $nodeDiv.css('cursor', 'zoom-out');
+            if (opts.collapse) {
+                $nodeDiv.css('cursor', 'zoom-out');
+            }
 
             // recurse until leaves found (-1) or to the level specified
             if (opts.depth == -1 || (level + 1 < opts.depth)) {
@@ -216,12 +224,14 @@
             });
         }
 
-        var $collapseBtn = createButton('collapse-all', function () {
-            event.preventDefault();
-            toggleAllNodes($container);
-            $container.find('.collapse-all, .expand-all').toggleClass('collapse-all expand-all');
-        });
-        $collapseBtn.appendTo($controls);
+        if (opts.collapse) {
+            var $collapseBtn = createButton('collapse-all', function () {
+                event.preventDefault();
+                toggleAllNodes($container);
+                $container.find('.collapse-all, .expand-all').toggleClass('collapse-all expand-all');
+            });
+            $collapseBtn.appendTo($controls);
+        }
 
         if (opts.dragScroller) {
             $contentPane.dragScroll({});

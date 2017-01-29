@@ -15,6 +15,7 @@
 //            direction: 'r2l',
             dragScroller: false,
             exportImage: false,
+            collapse: false,
             fullscreen: false,
             zoom: false,
         });
