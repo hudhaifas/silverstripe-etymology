@@ -41,12 +41,12 @@ class OriginLanguage
     private static $has_one = array(
     );
     private static $has_many = array(
+        'Words' => 'Word',
     );
     private static $many_many = array(
         'Regions' => 'OriginRegion'
     );
     private static $belongs_many_many = array(
-        'Words' => 'Word',
     );
     private static $searchable_fields = array(
         'Name' => array(

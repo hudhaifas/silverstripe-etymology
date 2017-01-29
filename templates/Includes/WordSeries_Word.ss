@@ -1,7 +1,7 @@
-<a href="$ObjectLink" title="$Word">$Word <% if $Spelling %><span>($Spelling)</span><% end_if %></a>
+<a title="<%t Etymologist.LANGUAGE 'Language' %>">
+    <span>$Language.Name</span>
+</a>
 
 <br />
 
-<a title="<%t Etymologist.LANGUAGES 'Languages' %>">
-    <span><% include Word_Languages %></span>
-</a>
+<a href="$ObjectLink" title="$Spelling">$Word</a>

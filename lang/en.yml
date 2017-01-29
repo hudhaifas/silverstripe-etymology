@@ -21,6 +21,7 @@ en:
     ORIGINS: 'Origins'
     DERIVATIONS: 'Derivations'
     REFERENCES: 'References'
+    LANGUAGE: 'Language'
     LANGUAGES: 'Languages'
     REGIONS: 'Regions'
     WORDS: 'Words'

@@ -44,13 +44,13 @@ class Word
     private static $translate = array(
     );
     private static $has_one = array(
-        'Pronunciation' => 'File'
+        'Pronunciation' => 'File',
+        'Language' => 'OriginLanguage',
     );
     private static $has_many = array(
     );
     private static $many_many = array(
         'References' => 'OriginReference',
-        'Languages' => 'OriginLanguage',
         'Origins' => 'Word',
     );
     private static $belongs_many_many = array(
@@ -80,7 +80,7 @@ class Word
         $labels['Description'] = _t('Etymologist.DESCRIPTION', 'Description');
         $labels['Pronunciation'] = _t('Etymologist.PRONUNCIATION', 'Pronunciation');
         $labels['References'] = _t('Etymologist.REFERENCES', 'References');
-        $labels['Languages'] = _t('Etymologist.LANGUAGES', 'Languages');
+        $labels['Language'] = _t('Etymologist.LANGUAGE', 'Language');
         $labels['Origins'] = _t('Etymologist.ORIGINS', 'Origins');
         $labels['Derivations'] = _t('Etymologist.DERIVATIONS', 'Derivations');
         $labels['Classification'] = _t('Etymologist.CLASSIFICATION', 'Classification');
@@ -151,10 +151,10 @@ class Word
             );
         }
 
-        if ($this->Languages()->Count()) {
+        if ($this->Language()->exists()) {
             $lists[] = array(
-                'Title' => _t('Etymologist.LANGUAGES', 'Languages'),
-                'Value' => $this->renderWith('Word_Languages')
+                'Title' => _t('Etymologist.LANGUAGE', 'Language'),
+                'Value' => $this->Language()->Name
             );
         }
 

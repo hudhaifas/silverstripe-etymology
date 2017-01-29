@@ -21,6 +21,7 @@ ar:
     ORIGINS: 'الأصول'
     DERIVATIONS: 'الاشتقاقات'
     REFERENCES: 'المراجع'
+    LANGUAGE: 'اللغة'
     LANGUAGES: 'اللغات'
     REGIONS: 'المناطق'
     WORDS: 'الكلمات'
