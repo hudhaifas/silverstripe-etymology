@@ -3,5 +3,4 @@
 </a>
 <br />
 
-
-<a href="$ObjectLink" title="<% if $Spelling %><%t Etymologist.SPELLING 'Spelling' %>: $Spelling<% end_if %>">$Word</a>
+<a href="$ObjectLink" title="<% if $Spelling %><%t Etymologist.SPELLING 'Spelling' %>: $Spelling<% end_if %>">$Word <% if Classification %><span title="<%t Etymologist.CLASSIFICATION 'Classification' %>: $Classification">($Classification)</span><% end_if %></a>
