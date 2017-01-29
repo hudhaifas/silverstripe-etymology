@@ -3,7 +3,5 @@
 <br />
 
 <a title="<%t Etymologist.LANGUAGES 'Languages' %>">
-    <% loop Languages %>
-        <span>$Title</span> <% if not Last %>, <% end_if %>
-    <% end_loop %>
+    <span><% include Word_Languages %></span>
 </a>

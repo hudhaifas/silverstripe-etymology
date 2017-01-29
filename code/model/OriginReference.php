@@ -35,6 +35,7 @@ class OriginReference
     private static $db = array(
         'Name' => 'Varchar(255)',
         'Description' => 'Varchar(255)',
+        'Details' => 'Varchar(255)',
         'Page' => 'Int',
         'Link' => 'Varchar(255)',
     );
@@ -63,7 +64,10 @@ class OriginReference
 
         $labels['Name'] = _t('Etymologist.NAME', 'Name');
         $labels['Description'] = _t('Etymologist.DESCRIPTION', 'Description');
-        $labels['Languages'] = _t('Etymologist.LANGUAGES', 'Languages');
+        $labels['Details'] = _t('Etymologist.DETAILS', 'Details');
+        $labels['Page'] = _t('Etymologist.PAGE', 'Page');
+        $labels['Link'] = _t('Etymologist.LINK', 'Link');
+        $labels['Words'] = _t('Etymologist.WORDS', 'Words');
 
         return $labels;
     }

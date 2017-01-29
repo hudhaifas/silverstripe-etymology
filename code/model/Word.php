@@ -37,7 +37,9 @@ class Word
         'Word' => 'Varchar(255)',
         'Spelling' => 'Varchar(255)',
         'Meaning' => 'Varchar(255)',
+        'Classification' => 'Varchar(255)',
         'Description' => 'Varchar(255)',
+        'Explanations' => 'HTMLText',
     );
     private static $translate = array(
     );
@@ -61,6 +63,12 @@ class Word
         ),
     );
     private static $summary_fields = array(
+        'Word',
+        'Spelling',
+        'Meaning',
+        'Classification',
+        'Description',
+        'Explanations',
     );
 
     public function fieldLabels($includerelations = true) {
@@ -74,6 +82,9 @@ class Word
         $labels['References'] = _t('Etymologist.REFERENCES', 'References');
         $labels['Languages'] = _t('Etymologist.LANGUAGES', 'Languages');
         $labels['Origins'] = _t('Etymologist.ORIGINS', 'Origins');
+        $labels['Derivations'] = _t('Etymologist.DERIVATIONS', 'Derivations');
+        $labels['Classification'] = _t('Etymologist.CLASSIFICATION', 'Classification');
+        $labels['Explanations'] = _t('Etymologist.EXPLANATIONS', 'Explanations');
 
         return $labels;
     }
@@ -89,17 +100,6 @@ class Word
                 $fields->removeFieldFromTab('Root.Main', 'Pronunciation');
                 $fields->addFieldToTab('Root.Main', $field);
             }
-
-//            $fields->removeFieldFromTab('Root', 'Categories');
-//            $fields->removeFieldFromTab('Root', 'Authors');
-//
-//            $categoryField = TagField::create(
-//                            'Categories', //
-//                            'Categories', //
-//                            BookCategory::get(), //
-//                            $self->Categories()
-//            );
-//            $fields->addFieldToTab('Root.Details', $categoryField);
         });
 
         $fields = parent::getCMSFields();
@@ -151,6 +151,13 @@ class Word
             );
         }
 
+        if ($this->Languages()->Count()) {
+            $lists[] = array(
+                'Title' => _t('Etymologist.LANGUAGES', 'Languages'),
+                'Value' => $this->renderWith('Word_Languages')
+            );
+        }
+
         if ($this->Description) {
             $lists[] = array(
                 'Title' => _t('Etymologist.DESCRIPTION', 'Description'),
@@ -187,12 +194,32 @@ class Word
                         ->renderWith('WordSeries')
             );
         }
-        
+
+        if ($this->References()->Count()) {
+            $lists[] = array(
+                'Title' => _t('Etymologist.REFERENCES', 'References'),
+                'Content' => $this->renderWith('Word_References')
+            );
+        }
+
+        if ($this->Explanations) {
+            $lists[] = array(
+                'Title' => _t('Etymologist.EXPLANATIONS', 'Explanations'),
+                'Content' => $this->Explanations
+            );
+        }
+
         return new ArrayList($lists);
     }
 
     public function getObjectTitle() {
-        return $this->getTitle();
+        $title = $this->getTitle();
+
+        if ($this->Classification) {
+            $title .= '(' . $this->Classification . ')';
+        }
+
+        return $title;
     }
 
     public function isObjectDisabled() {
