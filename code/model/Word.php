@@ -127,6 +127,10 @@ class Word
         
     }
 
+    public function getObjectDefaultImage() {
+        return null;
+    }
+
     public function getObjectLink() {
         return EtymologyPage::get()->first()->Link("show/$this->ID");
     }
