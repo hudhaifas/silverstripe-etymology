@@ -111,6 +111,10 @@ class Word
         return $this->Word;
     }
 
+    public function canView($member = null) {
+        return;
+    }
+
     public function getName() {
         return $this->Word;
     }
