@@ -74,17 +74,17 @@ class Word
     public function fieldLabels($includerelations = true) {
         $labels = parent::fieldLabels($includerelations);
 
-        $labels['Word'] = _t('Etymologist.WORD', 'Word');
-        $labels['Spelling'] = _t('Etymologist.SPELLING', 'Spelling');
-        $labels['Meaning'] = _t('Etymologist.MEANING', 'Meaning');
-        $labels['Description'] = _t('Etymologist.DESCRIPTION', 'Description');
-        $labels['Pronunciation'] = _t('Etymologist.PRONUNCIATION', 'Pronunciation');
-        $labels['References'] = _t('Etymologist.REFERENCES', 'References');
-        $labels['Language'] = _t('Etymologist.LANGUAGE', 'Language');
-        $labels['Origins'] = _t('Etymologist.ORIGINS', 'Origins');
-        $labels['Derivations'] = _t('Etymologist.DERIVATIONS', 'Derivations');
-        $labels['Classification'] = _t('Etymologist.CLASSIFICATION', 'Classification');
-        $labels['Explanations'] = _t('Etymologist.EXPLANATIONS', 'Explanations');
+        $labels['Word'] = _t('Etymology.WORD', 'Word');
+        $labels['Spelling'] = _t('Etymology.SPELLING', 'Spelling');
+        $labels['Meaning'] = _t('Etymology.MEANING', 'Meaning');
+        $labels['Description'] = _t('Etymology.DESCRIPTION', 'Description');
+        $labels['Pronunciation'] = _t('Etymology.PRONUNCIATION', 'Pronunciation');
+        $labels['References'] = _t('Etymology.REFERENCES', 'References');
+        $labels['Language'] = _t('Etymology.LANGUAGE', 'Language');
+        $labels['Origins'] = _t('Etymology.ORIGINS', 'Origins');
+        $labels['Derivations'] = _t('Etymology.DERIVATIONS', 'Derivations');
+        $labels['Classification'] = _t('Etymology.CLASSIFICATION', 'Classification');
+        $labels['Explanations'] = _t('Etymology.EXPLANATIONS', 'Explanations');
 
         return $labels;
     }
@@ -95,7 +95,7 @@ class Word
         $this->beforeUpdateCMSFields(function ($fields) use ($self) {
             if ($field = $fields->fieldByName('Root.Main.Pronunciation')) {
                 $field->getValidator()->setAllowedExtensions(array('mp3'));
-                $field->setFolderName("etymologist/pronunciations");
+                $field->setFolderName("etymology/pronunciations");
 
                 $fields->removeFieldFromTab('Root.Main', 'Pronunciation');
                 $fields->addFieldToTab('Root.Main', $field);
@@ -112,7 +112,7 @@ class Word
     }
 
     public function canView($member = null) {
-        return;
+        return true;
     }
 
     public function getName() {
@@ -147,28 +147,28 @@ class Word
         $lists = array();
         if ($this->Spelling) {
             $lists[] = array(
-                'Title' => _t('Etymologist.SPELLING', 'Spelling'),
+                'Title' => _t('Etymology.SPELLING', 'Spelling'),
                 'Value' => $this->Spelling
             );
         }
 
         if ($this->Meaning) {
             $lists[] = array(
-                'Title' => _t('Etymologist.MEANING', 'Meaning'),
+                'Title' => _t('Etymology.MEANING', 'Meaning'),
                 'Value' => $this->Meaning
             );
         }
 
         if ($this->Language()->exists()) {
             $lists[] = array(
-                'Title' => _t('Etymologist.LANGUAGE', 'Language'),
+                'Title' => _t('Etymology.LANGUAGE', 'Language'),
                 'Value' => $this->Language()->Name
             );
         }
 
         if ($this->Description) {
             $lists[] = array(
-                'Title' => _t('Etymologist.DESCRIPTION', 'Description'),
+                'Title' => _t('Etymology.DESCRIPTION', 'Description'),
                 'Value' => '<br />' . $this->Description
             );
         }
@@ -181,7 +181,7 @@ class Word
 
         if ($this->Origins()->Count()) {
             $lists[] = array(
-                'Title' => _t('Etymologist.ORIGINS', 'Origins'),
+                'Title' => _t('Etymology.ORIGINS', 'Origins'),
                 'Content' => $this
                         ->customise(array(
                             'TheWord' => $this,
@@ -193,7 +193,7 @@ class Word
 
         if ($this->Derivations()->Count()) {
             $lists[] = array(
-                'Title' => _t('Etymologist.DERIVATIONS', 'Derivations'),
+                'Title' => _t('Etymology.DERIVATIONS', 'Derivations'),
                 'Content' => $this
                         ->customise(array(
                             'TheWord' => $this,
@@ -205,14 +205,14 @@ class Word
 
         if ($this->References()->Count()) {
             $lists[] = array(
-                'Title' => _t('Etymologist.REFERENCES', 'References'),
+                'Title' => _t('Etymology.REFERENCES', 'References'),
                 'Content' => $this->renderWith('Word_References')
             );
         }
 
         if ($this->Explanations) {
             $lists[] = array(
-                'Title' => _t('Etymologist.EXPLANATIONS', 'Explanations'),
+                'Title' => _t('Etymology.EXPLANATIONS', 'Explanations'),
                 'Content' => $this->Explanations
             );
         }

@@ -62,12 +62,12 @@ class OriginReference
     public function fieldLabels($includerelations = true) {
         $labels = parent::fieldLabels($includerelations);
 
-        $labels['Name'] = _t('Etymologist.NAME', 'Name');
-        $labels['Description'] = _t('Etymologist.DESCRIPTION', 'Description');
-        $labels['Details'] = _t('Etymologist.DETAILS', 'Details');
-        $labels['Page'] = _t('Etymologist.PAGE', 'Page');
-        $labels['Link'] = _t('Etymologist.LINK', 'Link');
-        $labels['Words'] = _t('Etymologist.WORDS', 'Words');
+        $labels['Name'] = _t('Etymology.NAME', 'Name');
+        $labels['Description'] = _t('Etymology.DESCRIPTION', 'Description');
+        $labels['Details'] = _t('Etymology.DETAILS', 'Details');
+        $labels['Page'] = _t('Etymology.PAGE', 'Page');
+        $labels['Link'] = _t('Etymology.LINK', 'Link');
+        $labels['Words'] = _t('Etymology.WORDS', 'Words');
 
         return $labels;
     }

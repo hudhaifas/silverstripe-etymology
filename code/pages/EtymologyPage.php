@@ -32,9 +32,9 @@
 class EtymologyPage
         extends DataObjectPage {
 
-    private static $icon = "etymologist/images/etymology.png";
-    private static $url_segment = 'etymologist';
-    private static $menu_title = 'Etymologist';
+    private static $icon = "heritage-etymology/images/etymology.png";
+    private static $url_segment = 'etymology';
+    private static $menu_title = 'Etymology';
     private static $allowed_children = 'none';
     private static $description = 'Adds etymology to your website.';
 
@@ -54,13 +54,13 @@ class EtymologyPage_Controller
     public function init() {
         parent::init();
 
-        Requirements::css("etymologist/css/jquery.jOrgChart.css");
-        Requirements::css("etymologist/css/jquery.jOrgChart-rtl.css");
-        Requirements::css("etymologist/css/etymologist.css");
+        Requirements::css("etymology/css/jquery.jOrgChart.css");
+        Requirements::css("etymology/css/jquery.jOrgChart-rtl.css");
+        Requirements::css("etymology/css/etymology.css");
         if ($this->isRTL()) {
-            Requirements::css("etymologist/css/etymologist-rtl.css");
+            Requirements::css("etymology/css/etymology-rtl.css");
         }
-        Requirements::javascript("etymologist/js/jquery.jOrgChart.js");
+        Requirements::javascript("etymology/js/jquery.jOrgChart.js");
     }
 
     protected function searchObjects($list, $keywords) {
@@ -79,7 +79,7 @@ class EtymologyPage_Controller
         $langs = DataObject::get('OriginLanguage')->Limit(8);
         if (sizeof($langs) > 0) {
             $lists [] = array(
-                'Title' => _t('Etymologist.LANGUAGES', 'Languages'),
+                'Title' => _t('Etymology.LANGUAGES', 'Languages'),
                 'Items' => $langs
             );
         }
@@ -87,7 +87,7 @@ class EtymologyPage_Controller
         $regions = DataObject::get('OriginRegion')->Limit(8);
         if (sizeof($regions) > 0) {
             $lists [] = array(
-                'Title' => _t('Etymologist.REGIONS', 'Regions'),
+                'Title' => _t('Etymology.REGIONS', 'Regions'),
                 'Items' => $regions
             );
         }

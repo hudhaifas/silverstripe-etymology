@@ -5,6 +5,6 @@
  *
  * @return string
  */
-if (!defined('ETYMOLOGIST_DIR')) {
-    define('ETYMOLOGIST_DIR', ltrim(Director::makeRelative(realpath(__DIR__)), DIRECTORY_SEPARATOR));
+if (!defined('ETYMOLOGY_DIR')) {
+    define('ETYMOLOGY_DIR', ltrim(Director::makeRelative(realpath(__DIR__)), DIRECTORY_SEPARATOR));
 }

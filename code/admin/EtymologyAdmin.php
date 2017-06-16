@@ -29,7 +29,7 @@
  * @author Hudhaifa Shatnawi <hudhaifa.shatnawi@gmail.com>
  * @version 1.0, Jan 6, 2017 - 11:01:24 AM
  */
-class EtymologistAdmin
+class EtymologyAdmin
         extends ModelAdmin {
 
     private static $managed_models = array(
@@ -38,9 +38,9 @@ class EtymologistAdmin
         'OriginRegion',
         'OriginReference',
     );
-    private static $url_segment = 'etymologist';
-    private static $menu_title = "Word Origins";
-    private static $menu_icon = "etymologist/images/etymology.png";
+    private static $url_segment = 'etymology';
+    private static $menu_title = "Etymology";
+    private static $menu_icon = "heritage-etymology/images/etymology.png";
     public $showImportForm = false;
     private static $tree_class = 'Origin';
 

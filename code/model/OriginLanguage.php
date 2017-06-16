@@ -60,10 +60,10 @@ class OriginLanguage
     public function fieldLabels($includerelations = true) {
         $labels = parent::fieldLabels($includerelations);
 
-        $labels['Name'] = _t('Etymologist.NAME', 'Name');
-        $labels['Description'] = _t('Etymologist.DESCRIPTION', 'Description');
-        $labels['Regions'] = _t('Etymologist.REGIONS', 'Regions');
-        $labels['Words'] = _t('Etymologist.WORDS', 'Words');
+        $labels['Name'] = _t('Etymology.NAME', 'Name');
+        $labels['Description'] = _t('Etymology.DESCRIPTION', 'Description');
+        $labels['Regions'] = _t('Etymology.REGIONS', 'Regions');
+        $labels['Words'] = _t('Etymology.WORDS', 'Words');
 
         return $labels;
     }

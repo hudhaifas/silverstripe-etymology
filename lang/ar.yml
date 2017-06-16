@@ -1,5 +1,5 @@
 ar:
-  EtymologistAdmin:
+  EtymologyAdmin:
     MENUTITLE: 'أصول الكلمات'
   Word:
     PLURALNAME: 'الكلمات'
@@ -13,7 +13,7 @@ ar:
   OriginRegion:
     PLURALNAME: 'المناطق'
     SINGULARNAME: 'المناطق'
-  Etymologist:
+  Etymology:
     WORD: 'الكلمة'
     SPELLING: 'التهجئة'
     MEANING: 'المعنى'

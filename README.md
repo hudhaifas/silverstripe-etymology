@@ -1,15 +1,8 @@
-# Silverstripe Etymologist
+# Heritage Etymology
 Link a word with its origin from another language.
 
 ### Requirements
  - SilverStripe 3.2.*
-
-### Installation
-- Install the module through composer:
-```sh
-$ composer require hudhaifas/silverstripe-etymologist
-```
-- Run dev/build
 
 ## Bugtracker
 Issued and bugs are tracked on [github.com].
@@ -39,4 +32,4 @@ Issued and bugs are tracked on [github.com].
     DEALINGS IN THE SOFTWARE.
 
 
-   [github.com]: <http://github.com/hudhaifas/silverstripe-etymologist/issues>
+   [github.com]: <http://github.com/hudhaifas/heritage-etymology/issues>
