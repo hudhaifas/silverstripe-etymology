@@ -54,13 +54,13 @@ class EtymologyPage_Controller
     public function init() {
         parent::init();
 
-        Requirements::css("etymology/css/jquery.jOrgChart.css");
-        Requirements::css("etymology/css/jquery.jOrgChart-rtl.css");
-        Requirements::css("etymology/css/etymology.css");
+        Requirements::css(ETYMOLOGY_DIR . "/css/jquery.jOrgChart.css");
+        Requirements::css(ETYMOLOGY_DIR . "/css/jquery.jOrgChart-rtl.css");
+        Requirements::css(ETYMOLOGY_DIR . "/css/etymology.css");
         if ($this->isRTL()) {
-            Requirements::css("etymology/css/etymology-rtl.css");
+            Requirements::css(ETYMOLOGY_DIR . "/css/etymology-rtl.css");
         }
-        Requirements::javascript("etymology/js/jquery.jOrgChart.js");
+        Requirements::javascript(ETYMOLOGY_DIR . "/js/jquery.jOrgChart.js");
     }
 
     protected function searchObjects($list, $keywords) {
