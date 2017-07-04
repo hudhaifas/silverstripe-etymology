@@ -127,6 +127,10 @@ class Word
         return $this->renderWith('WordSeries_Down');
     }
 
+    public function getObjectItem() {
+        return $this->renderWith('Word_Item');
+    }
+
     public function getObjectImage() {
         
     }
@@ -231,7 +235,7 @@ class Word
     }
 
     public function isObjectDisabled() {
-        
+        return false;
     }
 
 }
