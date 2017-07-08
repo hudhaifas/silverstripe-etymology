@@ -29,10 +29,10 @@
  * @author Hudhaifa Shatnawi <hudhaifa.shatnawi@gmail.com>
  * @version 1.0, Jul 8, 2017 - 02:17:43 PM
  */
-class DialectExtension
+class DialectExtension_BelongsMany
         extends DataExtension {
 
-    private static $many_many = array(
+    private static $belongs_many_many = array(
         'Dialects' => 'EtymologyDialect',
     );
 

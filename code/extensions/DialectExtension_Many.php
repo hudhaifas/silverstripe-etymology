@@ -27,31 +27,40 @@
 /**
  *
  * @author Hudhaifa Shatnawi <hudhaifa.shatnawi@gmail.com>
- * @version 1.0, Jan 6, 2017 - 11:01:24 AM
+ * @version 1.0, Jul 8, 2017 - 02:17:43 PM
  */
-class EtymologyAdmin
-        extends ModelAdmin {
+class DialectExtension_Many
+        extends DataExtension {
 
-    private static $managed_models = array(
-        'EtymologyWord',
-        'EtymologyLanguage',
-        'EtymologyReference',
+    private static $many_many = array(
+        'Dialects' => 'EtymologyDialect',
     );
-    private static $url_segment = 'etymology';
-    private static $menu_title = "Etymology";
-    private static $menu_icon = "heritage-etymology/images/etymology.png";
-    public $showImportForm = false;
-    private static $tree_class = 'Etymology';
 
-    public function getEditForm($id = null, $fields = null) {
-        $form = parent::getEditForm($id, $fields);
-
-        $grid = $form->Fields()->dataFieldByName('Etymology');
-        if ($grid) {
-            $grid->getConfig()->removeComponentsByType('GridFieldDetailForm');
+    public function extraTabs(&$lists) {
+        $dialects = $this->owner->Dialects();
+        if ($dialects->Count()) {
+            $lists[] = array(
+                'Title' => _t('Etymology.DIALECTS', 'Dialects'),
+                'Content' => $this->owner
+                        ->customise(array(
+                            'Results' => $dialects
+                        ))
+                        ->renderWith('List_Grid')
+            );
         }
+    }
 
-        return $form;
+    public function updateCMSFields(FieldList $fields) {
+        $field = $fields->fieldByName('Root.Dialects.Dialects');
+        if ($field != null) {
+//        $config = GridFieldConfig::create();
+            $config = $field->getConfig();
+
+            $config->removeComponentsByType('GridFieldAddExistingAutocompleter');
+            $config->addComponent(new GridFieldAddExistingAutocompleter('buttons-before-right', array('Name')));
+
+            $field->setConfig($config);
+        }
     }
 
 }
