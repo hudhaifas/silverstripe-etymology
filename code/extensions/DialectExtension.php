@@ -33,17 +33,17 @@ class DialectExtension
         extends DataExtension {
 
     private static $many_many = array(
-        'Dialects' => 'Dialect',
+        'Dialects' => 'EtymologyDialect',
     );
 
     public function extraTabs(&$lists) {
-        $people = $this->owner->Dialects();
-        if ($people->Count()) {
+        $dialects = $this->owner->Dialects();
+        if ($dialects->Count()) {
             $lists[] = array(
                 'Title' => _t('Etymology.DIALECTS', 'Dialects'),
                 'Content' => $this->owner
                         ->customise(array(
-                            'Results' => $people
+                            'Results' => $dialects
                         ))
                         ->renderWith('List_Grid')
             );

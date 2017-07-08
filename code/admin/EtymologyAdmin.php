@@ -49,7 +49,6 @@ class EtymologyAdmin
         $grid = $form->Fields()->dataFieldByName('Origin');
         if ($grid) {
             $grid->getConfig()->removeComponentsByType('GridFieldDetailForm');
-            $grid->getConfig()->addComponent(new GridFieldSubsiteDetailForm());
         }
 
         return $form;
