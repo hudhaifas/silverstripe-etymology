@@ -27,47 +27,40 @@
 /**
  *
  * @author Hudhaifa Shatnawi <hudhaifa.shatnawi@gmail.com>
- * @version 1.0, Jan 6, 2017 - 10:38:50 AM
+ * @version 1.0, Jul 8, 2017 - 02:17:43 PM
  */
-class OriginRegion
-        extends DataObject {
+class DialectExtension
+        extends DataExtension {
 
-    private static $db = array(
-        'Name' => 'Varchar(255)',
-        'Description' => 'Varchar(255)',
-    );
-    private static $translate = array(
-    );
-    private static $has_one = array(
-    );
-    private static $has_many = array(
-    );
     private static $many_many = array(
-    );
-    private static $belongs_many_many = array(
-        'Languages' => 'OriginLanguage'
-    );
-    private static $searchable_fields = array(
-        'Name' => array(
-            'field' => 'TextField',
-            'filter' => 'PartialMatchFilter',
-        ),
-    );
-    private static $summary_fields = array(
+        'Dialects' => 'Dialect',
     );
 
-    public function fieldLabels($includerelations = true) {
-        $labels = parent::fieldLabels($includerelations);
-
-        $labels['Name'] = _t('Etymology.NAME', 'Name');
-        $labels['Description'] = _t('Etymology.DESCRIPTION', 'Description');
-        $labels['Languages'] = _t('Etymology.LANGUAGES', 'Languages');
-
-        return $labels;
+    public function extraTabs(&$lists) {
+        $people = $this->owner->Dialects();
+        if ($people->Count()) {
+            $lists[] = array(
+                'Title' => _t('Etymology.DIALECTS', 'Dialects'),
+                'Content' => $this->owner
+                        ->customise(array(
+                            'Results' => $people
+                        ))
+                        ->renderWith('List_Grid')
+            );
+        }
     }
 
-    public function getTitle() {
-        return $this->Name;
+    public function updateCMSFields(FieldList $fields) {
+        $field = $fields->fieldByName('Root.Dialects.Dialects');
+        if ($field != null) {
+//        $config = GridFieldConfig::create();
+            $config = $field->getConfig();
+
+            $config->removeComponentsByType('GridFieldAddExistingAutocompleter');
+            $config->addComponent(new GridFieldAddExistingAutocompleter('buttons-before-right', array('Name')));
+
+            $field->setConfig($config);
+        }
     }
 
 }

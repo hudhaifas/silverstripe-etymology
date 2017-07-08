@@ -27,26 +27,28 @@
 /**
  *
  * @author Hudhaifa Shatnawi <hudhaifa.shatnawi@gmail.com>
- * @version 1.0, Jan 6, 2017 - 10:37:25 AM
+ * @version 1.0, Jan 6, 2017 - 11:54:46 AM
  */
-class OriginLanguage
+class EtymologyReference
         extends DataObject {
 
     private static $db = array(
         'Name' => 'Varchar(255)',
         'Description' => 'Varchar(255)',
+        'Details' => 'Varchar(255)',
+        'Page' => 'Int',
+        'Link' => 'Varchar(255)',
     );
     private static $translate = array(
     );
     private static $has_one = array(
     );
     private static $has_many = array(
-        'Words' => 'Word',
     );
     private static $many_many = array(
-        'Regions' => 'OriginRegion'
     );
     private static $belongs_many_many = array(
+        'Words' => 'EtymologyWord',
     );
     private static $searchable_fields = array(
         'Name' => array(
@@ -62,7 +64,9 @@ class OriginLanguage
 
         $labels['Name'] = _t('Etymology.NAME', 'Name');
         $labels['Description'] = _t('Etymology.DESCRIPTION', 'Description');
-        $labels['Regions'] = _t('Etymology.REGIONS', 'Regions');
+        $labels['Details'] = _t('Etymology.DETAILS', 'Details');
+        $labels['Page'] = _t('Etymology.PAGE', 'Page');
+        $labels['Link'] = _t('Etymology.LINK', 'Link');
         $labels['Words'] = _t('Etymology.WORDS', 'Words');
 
         return $labels;

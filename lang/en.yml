@@ -1,18 +1,23 @@
 en:
   EtymologyAdmin:
     MENUTITLE: 'Etymology'
-  Word:
+  
+  EtymologyWord:
     PLURALNAME: 'Words'
     SINGULARNAME: 'Words'
-  OriginReference:
+  
+  EtymologyReference:
     PLURALNAME: 'References'
     SINGULARNAME: 'References'
-  OriginLanguage:
+  
+  EtymologyLanguage:
     PLURALNAME: 'Languages'
     SINGULARNAME: 'Languages'
-  OriginRegion:
-    PLURALNAME: 'Regions'
-    SINGULARNAME: 'Regions'
+  
+  EtymologyDialect:
+    PLURALNAME: 'Dialects'
+    SINGULARNAME: 'Dialects'
+  
   Etymology:
     WORD: 'Word'
     SPELLING: 'Spelling'
@@ -21,10 +26,11 @@ en:
     ORIGINS: 'Origins'
     DERIVATIONS: 'Derivations'
     REFERENCES: 'References'
+    WORDS: 'Words'
+    DIALECT: 'Dialect'
+    DIALECTS: 'Dialects'
     LANGUAGE: 'Language'
     LANGUAGES: 'Languages'
-    REGIONS: 'Regions'
-    WORDS: 'Words'
     NAME: 'Name'
     DESCRIPTION: 'Description'
     EXPLANATIONS: 'Explanations'

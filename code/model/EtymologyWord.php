@@ -29,7 +29,7 @@
  * @author Hudhaifa Shatnawi <hudhaifa.shatnawi@gmail.com>
  * @version 1.0, Jan 6, 2017 - 10:33:31 AM
  */
-class Word
+class EtymologyWord
         extends DataObject
         implements ManageableDataObject {
 
@@ -45,16 +45,16 @@ class Word
     );
     private static $has_one = array(
         'Pronunciation' => 'File',
-        'Language' => 'OriginLanguage',
+        'Dialect' => 'EtymologyDialect',
     );
     private static $has_many = array(
     );
     private static $many_many = array(
-        'References' => 'OriginReference',
-        'Origins' => 'Word',
+        'References' => 'EtymologyReference',
+        'Origins' => 'EtymologyWord',
     );
     private static $belongs_many_many = array(
-        'Derivations' => 'Word',
+        'Derivations' => 'EtymologyWord',
     );
     private static $searchable_fields = array(
         'Word' => array(
@@ -80,7 +80,7 @@ class Word
         $labels['Description'] = _t('Etymology.DESCRIPTION', 'Description');
         $labels['Pronunciation'] = _t('Etymology.PRONUNCIATION', 'Pronunciation');
         $labels['References'] = _t('Etymology.REFERENCES', 'References');
-        $labels['Language'] = _t('Etymology.LANGUAGE', 'Language');
+        $labels['Dialect'] = _t('Etymology.DIALECT', 'Dialect');
         $labels['Origins'] = _t('Etymology.ORIGINS', 'Origins');
         $labels['Derivations'] = _t('Etymology.DERIVATIONS', 'Derivations');
         $labels['Classification'] = _t('Etymology.CLASSIFICATION', 'Classification');
@@ -163,10 +163,10 @@ class Word
             );
         }
 
-        if ($this->Language()->exists()) {
+        if ($this->Dialect()->exists()) {
             $lists[] = array(
-                'Title' => _t('Etymology.LANGUAGE', 'Language'),
-                'Value' => $this->Language()->Name
+                'Title' => _t('Etymology.DIALECT', 'Dialect'),
+                'Value' => $this->Dialect()->Name
             );
         }
 

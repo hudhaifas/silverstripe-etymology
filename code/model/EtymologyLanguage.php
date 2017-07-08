@@ -27,32 +27,47 @@
 /**
  *
  * @author Hudhaifa Shatnawi <hudhaifa.shatnawi@gmail.com>
- * @version 1.0, Jan 6, 2017 - 11:01:24 AM
+ * @version 1.0, Jan 6, 2017 - 10:37:25 AM
  */
-class EtymologyAdmin
-        extends ModelAdmin {
+class EtymologyLanguage
+        extends DataObject {
 
-    private static $managed_models = array(
-        'EtymologyWord',
-        'EtymologyLanguage',
-        'EtymologyReference',
+    private static $db = array(
+        'Name' => 'Varchar(255)',
+        'Description' => 'Varchar(255)',
     );
-    private static $url_segment = 'etymology';
-    private static $menu_title = "Etymology";
-    private static $menu_icon = "heritage-etymology/images/etymology.png";
-    public $showImportForm = false;
-    private static $tree_class = 'Origin';
+    private static $translate = array(
+    );
+    private static $has_one = array(
+    );
+    private static $has_many = array(
+        'Dialects' => 'EtymologyDialect',
+    );
+    private static $many_many = array(
+    );
+    private static $belongs_many_many = array(
+    );
+    private static $searchable_fields = array(
+        'Name' => array(
+            'field' => 'TextField',
+            'filter' => 'PartialMatchFilter',
+        ),
+    );
+    private static $summary_fields = array(
+    );
 
-    public function getEditForm($id = null, $fields = null) {
-        $form = parent::getEditForm($id, $fields);
+    public function fieldLabels($includerelations = true) {
+        $labels = parent::fieldLabels($includerelations);
 
-        $grid = $form->Fields()->dataFieldByName('Origin');
-        if ($grid) {
-            $grid->getConfig()->removeComponentsByType('GridFieldDetailForm');
-            $grid->getConfig()->addComponent(new GridFieldSubsiteDetailForm());
-        }
+        $labels['Name'] = _t('Etymology.NAME', 'Name');
+        $labels['Description'] = _t('Etymology.DESCRIPTION', 'Description');
+        $labels['Dialects'] = _t('Etymology.DIALECTS', 'Dialects');
 
-        return $form;
+        return $labels;
+    }
+
+    public function getTitle() {
+        return $this->Name;
     }
 
 }

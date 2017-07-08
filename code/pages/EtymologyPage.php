@@ -70,25 +70,17 @@ class EtymologyPage_Controller
     }
 
     protected function getObjectsList() {
-        return DataObject::get('Word');
+        return DataObject::get('EtymologyWord');
     }
 
     protected function getFiltersList() {
         $lists = array();
 
-        $langs = DataObject::get('OriginLanguage')->Limit(8);
+        $langs = DataObject::get('EtymologyLanguage')->Limit(8);
         if (sizeof($langs) > 0) {
             $lists [] = array(
                 'Title' => _t('Etymology.LANGUAGES', 'Languages'),
                 'Items' => $langs
-            );
-        }
-
-        $regions = DataObject::get('OriginRegion')->Limit(8);
-        if (sizeof($regions) > 0) {
-            $lists [] = array(
-                'Title' => _t('Etymology.REGIONS', 'Regions'),
-                'Items' => $regions
             );
         }
 

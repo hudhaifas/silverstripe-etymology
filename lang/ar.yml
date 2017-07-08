@@ -1,18 +1,23 @@
 ar:
   EtymologyAdmin:
     MENUTITLE: 'أصول الكلمات'
-  Word:
+  
+  EtymologyWord:
     PLURALNAME: 'الكلمات'
     SINGULARNAME: 'الكلمات'
-  OriginReference:
+  
+  EtymologyReference:
     PLURALNAME: 'المراجع'
     SINGULARNAME: 'المراجع'
-  OriginLanguage:
+  
+  EtymologyLanguage:
     PLURALNAME: 'اللغات'
     SINGULARNAME: 'اللغات'
-  OriginRegion:
-    PLURALNAME: 'المناطق'
-    SINGULARNAME: 'المناطق'
+
+  EtymologyDialect:
+    PLURALNAME: 'اللهجات'
+    SINGULARNAME: 'اللهجات'
+
   Etymology:
     WORD: 'الكلمة'
     SPELLING: 'التهجئة'
@@ -21,10 +26,11 @@ ar:
     ORIGINS: 'الأصول'
     DERIVATIONS: 'الاشتقاقات'
     REFERENCES: 'المراجع'
+    WORDS: 'الكلمات'
+    DIALECT: 'اللهجة'
+    DIALECTS: 'اللهجات'
     LANGUAGE: 'اللغة'
     LANGUAGES: 'اللغات'
-    REGIONS: 'المناطق'
-    WORDS: 'الكلمات'
     NAME: 'الاسم'
     DESCRIPTION: 'الوصف'
     EXPLANATIONS: 'الشروحات'
