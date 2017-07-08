@@ -31,7 +31,7 @@
  */
 class Word
         extends DataObject
-        implements ManagedDataObject {
+        implements ManageableDataObject {
 
     private static $db = array(
         'Word' => 'Varchar(255)',
