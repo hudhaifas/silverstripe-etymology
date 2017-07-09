@@ -1,9 +1,9 @@
-<div>
-    <a <% if ObjectLink %>href="$ObjectLink"<% end_if %> title="$ObjectTitle">
+<div style="height: 12rem;">
+    <a <% if not $isObjectDisabled %>href="$ObjectLink"<% end_if %> title="$ObjectTitle">
         <div class="thumbnail text-center col-sm-12 col-xs-4 dataobject-image">
             <% include List_Image %>
 
-            <% if ObjectLink %>
+            <% if not $isObjectDisabled %>
                 <div class="mask">
                     <div class="info"><%t DataObjectPage.MORE_ABOUT 'More' %></div>
                 </div>

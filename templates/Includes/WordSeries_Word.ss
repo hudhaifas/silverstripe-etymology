@@ -1,5 +1,5 @@
-<a title="<% if $Language %><%t Etymology.LANGUAGE 'Language' %> $Language.Name<% end_if %>">
-    <span>$Language.Name</span>
+<a title="<% if Dialect %><%t Etymology.DIALECT 'Dialect' %> $Dialect.Name<% end_if %>">
+    <span>$Dialect.Name</span>
 </a>
 <br />
 

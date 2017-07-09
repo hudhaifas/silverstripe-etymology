@@ -74,17 +74,18 @@ class EtymologyPage_Controller
     }
 
     protected function getFiltersList() {
-        $lists = array();
-
-        $langs = DataObject::get('EtymologyLanguage')->Limit(8);
-        if (sizeof($langs) > 0) {
-            $lists [] = array(
-                'Title' => _t('Etymology.LANGUAGES', 'Languages'),
-                'Items' => $langs
-            );
-        }
-
-        return new ArrayList($lists);
+//        $lists = array();
+//
+//        $langs = DataObject::get('EtymologyLanguage')->Limit(8);
+//        if (sizeof($langs) > 0) {
+//            $lists [] = array(
+//                'Title' => _t('Etymology.LANGUAGES', 'Languages'),
+//                'Items' => $langs
+//            );
+//        }
+//
+//        return new ArrayList($lists);
+        return null;
     }
 
     protected function getPageLength() {
@@ -92,7 +93,7 @@ class EtymologyPage_Controller
     }
 
     public function getWords() {
-        return DataObject::get('Word');
+        return DataObject::get('EtymologyWord');
     }
 
 }

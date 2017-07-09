@@ -30,7 +30,8 @@
  * @version 1.0, Jul 8, 2017 - 02:11:12 PM
  */
 class EtymologyDialect
-        extends DataObject {
+        extends DataObject
+        implements ManageableDataObject {
 
     private static $db = array(
         'Name' => 'Varchar(255)',
@@ -70,6 +71,46 @@ class EtymologyDialect
 
     public function getTitle() {
         return $this->Name;
+    }
+
+    public function canView($member = null) {
+        return true;
+    }
+
+    public function getObjectItem() {
+        return $this->renderWith('Etymology_Item');
+    }
+
+    public function getObjectImage() {
+        
+    }
+
+    public function getObjectDefaultImage() {
+        
+    }
+
+    public function getObjectLink() {
+        return EtymologyPage::get()->first()->Link("show/$this->ID");
+    }
+
+    public function getObjectRelated() {
+        return null;
+    }
+
+    public function getObjectSummary() {
+        return $this->renderWith('Etymology_Summary');
+    }
+
+    public function getObjectTabs() {
+        return null;
+    }
+
+    public function getObjectTitle() {
+        return $this->Name;
+    }
+
+    public function isObjectDisabled() {
+        return false;
     }
 
 }

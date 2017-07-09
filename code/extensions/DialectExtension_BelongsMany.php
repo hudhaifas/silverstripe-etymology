@@ -39,11 +39,17 @@ class DialectExtension_BelongsMany
     public function extraTabs(&$lists) {
         $dialects = $this->owner->Dialects();
         if ($dialects->Count()) {
+            $wordList = new ArrayList();
+            foreach ($dialects as $d) {
+                $wordList->merge($d->Words());
+            }
+
+
             $lists[] = array(
                 'Title' => _t('Etymology.DIALECTS', 'Dialects'),
                 'Content' => $this->owner
                         ->customise(array(
-                            'Results' => $dialects
+                            'Results' => $wordList
                         ))
                         ->renderWith('List_Grid')
             );

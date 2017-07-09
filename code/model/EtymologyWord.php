@@ -90,19 +90,24 @@ class EtymologyWord
     }
 
     public function getCMSFields() {
-        $self = & $this;
-
-        $this->beforeUpdateCMSFields(function ($fields) use ($self) {
-            if ($field = $fields->fieldByName('Root.Main.Pronunciation')) {
-                $field->getValidator()->setAllowedExtensions(array('mp3'));
-                $field->setFolderName("etymology/pronunciations");
-
-                $fields->removeFieldFromTab('Root.Main', 'Pronunciation');
-                $fields->addFieldToTab('Root.Main', $field);
-            }
-        });
-
         $fields = parent::getCMSFields();
+
+        if ($field = $fields->fieldByName('Root.Main.Pronunciation')) {
+            $field->getValidator()->setAllowedExtensions(array('mp3'));
+            $field->setFolderName("etymology/pronunciations");
+
+            $fields->removeFieldFromTab('Root.Main', 'Pronunciation');
+            $fields->addFieldToTab('Root.Main', $field);
+        }
+
+        $this->reorderField($fields, 'Word', 'Root.Main', 'Root.Main');
+        $this->reorderField($fields, 'Spelling', 'Root.Main', 'Root.Main');
+        $this->reorderField($fields, 'Meaning', 'Root.Main', 'Root.Main');
+        $this->reorderField($fields, 'Classification', 'Root.Main', 'Root.Main');
+        $this->reorderField($fields, 'Description', 'Root.Main', 'Root.Main');
+        $this->reorderField($fields, 'Dialect', 'Root.Main', 'Root.Main');
+        $this->reorderField($fields, 'Pronunciation', 'Root.Main', 'Root.Main');
+        $this->reorderField($fields, 'Explanations', 'Root.Main', 'Root.Main');
 
         return $fields;
     }
@@ -113,6 +118,38 @@ class EtymologyWord
 
     public function canView($member = null) {
         return true;
+    }
+
+    /// Utils ///
+    function reorderField($fields, $name, $fromTab, $toTab, $disabled = false) {
+        $field = $fields->fieldByName($fromTab . '.' . $name);
+
+        if ($field) {
+            $fields->removeFieldFromTab($fromTab, $name);
+            $fields->addFieldToTab($toTab, $field);
+
+            if ($disabled) {
+                $field = $field->performDisabledTransformation();
+            }
+        }
+
+        return $field;
+    }
+
+    function removeField($fields, $name, $fromTab) {
+        $field = $fields->fieldByName($fromTab . '.' . $name);
+
+        if ($field) {
+            $fields->removeFieldFromTab($fromTab, $name);
+        }
+
+        return $field;
+    }
+
+    function trim($field) {
+        if ($this->$field) {
+            $this->$field = trim($this->$field);
+        }
     }
 
     public function getName() {
@@ -128,11 +165,11 @@ class EtymologyWord
     }
 
     public function getObjectItem() {
-        return $this->renderWith('Word_Item');
+        return $this->renderWith('Etymology_Item');
     }
 
     public function getObjectImage() {
-        
+        return null;
     }
 
     public function getObjectDefaultImage() {
@@ -164,6 +201,11 @@ class EtymologyWord
         }
 
         if ($this->Dialect()->exists()) {
+            $lists[] = array(
+                'Title' => _t('Etymology.LANGUAGE', 'Language'),
+                'Value' => $this->Dialect()->Language()->Name
+            );
+
             $lists[] = array(
                 'Title' => _t('Etymology.DIALECT', 'Dialect'),
                 'Value' => $this->Dialect()->Name
