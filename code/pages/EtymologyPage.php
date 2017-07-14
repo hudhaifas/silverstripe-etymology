@@ -32,7 +32,7 @@
 class EtymologyPage
         extends DataObjectPage {
 
-    private static $icon = "heritage-etymology/images/etymology.png";
+    private static $icon = "etymology/images/etymology.png";
     private static $url_segment = 'etymology';
     private static $menu_title = 'Etymology';
     private static $allowed_children = 'none';
