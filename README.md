@@ -1,4 +1,4 @@
-# Heritage Etymology
+# Silverstripe Etymology
 Link a word with its origin from another language.
 
 ### Requirements
