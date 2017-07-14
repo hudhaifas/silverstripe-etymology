@@ -39,7 +39,7 @@ class EtymologyAdmin
     );
     private static $url_segment = 'etymology';
     private static $menu_title = "Etymology";
-    private static $menu_icon = "heritage-etymology/images/etymology.png";
+    private static $menu_icon = "etymology/images/etymology.png";
     public $showImportForm = false;
     private static $tree_class = 'Etymology';
 
